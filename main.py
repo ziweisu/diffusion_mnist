@@ -10,7 +10,6 @@ https://arxiv.org/pdf/2006.11239.pdf
 """
 
 from tqdm import tqdm, trange
-
 import torch
 from torch import optim
 from mnist_dataset import get_mnist_dataloader
@@ -22,9 +21,9 @@ if __name__ == "__main__":
     # Prepare images
     trainloader, testloader = get_mnist_dataloader()
     idx, (images, labels) = next(enumerate(testloader))
-
+ 
     # Prepare model and training
-    device = "cpu"
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     model = ConditionalUNet().to(device)
     process = DiffusionProcess()
     optimizer = optim.Adam(model.parameters(), lr=2e-4)
