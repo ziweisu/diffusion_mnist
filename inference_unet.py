@@ -10,7 +10,6 @@ import torch
 from models import UNet
 from diffusion_model import DiffusionProcess
 import matplotlib.pyplot as plt
-%matplotlib inline
 
 if __name__ == "__main__":
     # Prepare model
